@@ -1,0 +1,50 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile.backend
+    container_name: hook-backend-estv
+    expose:
+      - "8080"
+    networks:
+      - caddy_net
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PORT=8080
+      - MAX_REQUEST_SIZE=1048576
+      - NODE_ENV=production
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile.frontend
+    container_name: hook-frontend-estv
+    expose:
+      - "80"
+    networks:
+      - caddy_net
+    depends_on:
+      - backend
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+          cpus: '0.25'
+        reservations:
+          memory: 32M
+          cpus: '0.1'
+
+networks:
+  caddy_net:
+    external: true

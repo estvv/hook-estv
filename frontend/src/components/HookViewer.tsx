@@ -88,8 +88,11 @@ export function HookViewer({ slug, onBack }: Props) {
     <div className="min-h-screen bg-white">
       <div className="max-w-6xl mx-auto px-6 py-8">
         <div className="mb-6">
-          <button onClick={onBack} className="text-neutral-600 hover:text-neutral-900 text-sm">
-            ← Create new hook
+          <button onClick={onBack} className="text-neutral-600 hover:text-neutral-900 text-sm flex items-center gap-1">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Create new hook
           </button>
         </div>
 
@@ -116,7 +119,7 @@ export function HookViewer({ slug, onBack }: Props) {
             </button>
           </div>
           <p className="text-neutral-400 text-xs mt-2">
-            Auto-deletes in 24 hours • {requests.length} requests received
+            {requests.length} requests received
           </p>
         </div>
 

@@ -41,10 +41,6 @@ export function HookCreator() {
         >
           {loading ? 'Creating...' : 'Create Hook'}
         </button>
-
-        <p className="text-neutral-400 text-xs text-center mt-4">
-          Hooks auto-delete after 24 hours
-        </p>
       </div>
     </div>
   );

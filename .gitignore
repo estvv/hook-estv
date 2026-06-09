@@ -30,3 +30,6 @@ logs/
 # Database
 *.db
 *.db-journal
+
+# Others
+Makefile
